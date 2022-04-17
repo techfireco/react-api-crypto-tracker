@@ -8,12 +8,17 @@ function App() {
     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=100&page=1&sparkline=false')
     .then(res =>{
       setCoins(res.data);
-      console.log(res.data);
     })
-  })
+    .catch(error => console.log(error));
+  },[]);
   return (
-    <div className="App">
-      <h1>Hello Crypto Tracker</h1>
+    <div className='coin-app'>
+      <div className='coin-search'>
+        <h1 className='coin-text'>Search a currency</h1>
+        <form>
+          <input type='text' placeholder='search' className='coin-input'></input>
+        </form>
+      </div>
     </div>
   );
 }
